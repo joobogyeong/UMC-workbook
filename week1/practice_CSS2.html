@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            
+        }
+        nav {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+        }
+        .header {
+            background-color: #1E3A5F;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .menu {
+            background-color: #D9534F;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        main {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr;
+            text-align: center;
+        }
+        
+        .hero {
+            grid-column: span 2;
+            background-color: #4A90E2;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .main {
+            background-color: #1E3A5F;
+            color: white;
+            padding: 45px;
+        }
+        
+        .sidebar {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            
+        }
+        
+        .image {
+            background-color: #A0D1E6;
+            padding: 20px;
+            text-align: center;
+        }
+        .extra {
+            background-color: #7FC29B;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        footer {
+            background-color: #EFCB68;
+            text-align: center;
+            padding: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+        <nav>
+            <div class = "header">HEADER</div>
+            <div class = "menu">MENU</div>
+        </nav>
+        
+        <main>
+            <div class="hero">HERO</div>
+            <div class="sidebar">
+                <div class="main">MAIN</div>
+                    <div>
+                        <div class="image">IMAGE</div>
+                        <div class="extra">EXTRA</div>
+                    </div>
+            </div>
+        </main>
+        
+        <footer>
+            BANNER
+        </footer>
+</body>
+</html>
