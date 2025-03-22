@@ -27,3 +27,9 @@ jbg.name='lgh';
 jbg.school="아주대";
 console.log(jbg.name);
 console.log(jbg.school);
+
+const numbers =[10, 20, 30, 40, 50];
+const sum = numbers.reduce((result, number)=>{
+    return result + number;
+}, 10)
+console.log(sum)
