@@ -1,2 +1,2 @@
-const a : symbol = Symbol('symbol');
-console.log(a)
+const a : {name: string, age: number} = {name: '주보경', age: 25}
+console.log(a.age)
