@@ -1,0 +1,8 @@
+# node_modules 빌드 폴더 무시
+node_modules/
+
+# vite 빌드 결과물 무시
+dist/
+
+# 환경변수 파일 무시
+.env
