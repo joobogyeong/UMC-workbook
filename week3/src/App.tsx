@@ -1,14 +1,29 @@
 import './App.css';
 import Moviepage from './pages/Moviepage';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import NotFound from './pages/not-found';
+import HomePage from './pages/HomePage';
+import MovieDetailPage from './pages/MovieDetailPage';
+
+const router = createBrowserRouter([
+  {
+    path:'/',
+    element:<HomePage />,
+    errorElement: <NotFound/>,
+    children: [{
+      path: 'movies/:category',
+      element: <Moviepage/>,
+    },{
+      path:'movie/:movieId',
+      element: <MovieDetailPage /> 
+    }]
+  },
+])
+
 
 
 function App() {
-  console.log(import.meta.env.VITE_TMDB_KEY)
-  return (
-    <>
-      <Moviepage/>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
