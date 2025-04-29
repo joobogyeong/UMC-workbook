@@ -1,8 +1,12 @@
 import useForm from './../hooks/useForm';
 import { UserSigninInformation, validateSignin } from "../utils/validate"
 import React from 'react';
+import { postSignin } from '../src/apis/auth';
+import { useLocalStorage } from './../hooks/useLocalStorage';
+import { LOCAL_STORAGE_KEY } from './../constants/key';
 
 const LoginPage = () => {
+    const {setItem} = useLocalStorage(LOCAL_STORAGE_KEY.accessToken)
     const { values, errors, touched, getInputProps } = useForm<UserSigninInformation>({
         initialValue: {
             email: "",
@@ -10,8 +14,15 @@ const LoginPage = () => {
         },
         validate: validateSignin,
     })
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         console.log(values)
+        try{
+            const response = await postSignin(values);
+            setItem(response.data.accessToken);
+        }catch(error){
+            alert(error?.message)
+        }
+        
     };
     const isDisabled =
         Object.values(errors || {}).some((error) => error.length > 0) ||
