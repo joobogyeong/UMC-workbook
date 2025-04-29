@@ -1,33 +1,52 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-dom'
 import './App.css'
 import HomePage from './../pages/HomePage';
 import NotFoundPage from './../pages/NotFoundPage';
 import LoginPage from './../pages/LoginPage';
 import HomeLayout from './../Layouts/HomeLayout';
 import SignupPage from './../pages/SignupPage';
-import Mypage from './../pages/Mypage';
+import { AuthProvider } from './context/Authcontext';
+import ProtectedLayout from './../Layouts/ProtectedLayout';
+import MyPage from './../pages/Mypage';
 
-const router = createBrowserRouter([
+const publicRoutes: RouteObject[] = [
   {
     path: "/",
-    element: <HomeLayout/>,
-    errorElement: <NotFoundPage/>,
+    element: <HomeLayout />,
+    errorElement: <NotFoundPage />,
     children: [
-      {index: true, element: <HomePage/>},
-      {path: "Login", element: <LoginPage/>},
-      {path: "signup", element: <SignupPage/>},
-      {path: "my", element: <Mypage/>},
-    ]
-  }
-])
+      { index: true, element: <HomePage /> },
+      { path: "login", element: <LoginPage /> },
+      { path: "signup", element: <SignupPage /> },
+    ],
+  },
+];
+
+// protectedRoutes: 인증이 필요한 라우트
+const protectedRoutes: RouteObject[] = [
+  {
+    path: "/",
+    element: <ProtectedLayout />,
+    errorElement: <NotFoundPage />,
+    children: [
+      {
+        path: "my",
+        element: <MyPage />,
+      },
+    ],
+  },
+];
+
+
+const router = createBrowserRouter([...publicRoutes, ...protectedRoutes])
 
 function App() {
 
 
   return (
-    <>
+    <AuthProvider>
       <RouterProvider router = {router}/>
-    </>
+    </AuthProvider>
   )
 }
 
