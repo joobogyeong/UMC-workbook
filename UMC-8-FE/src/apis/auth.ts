@@ -1,7 +1,6 @@
 import { RequestSigninDto, RequestSignupDto, ResponseMyInfoDto, ResponseSigninDto, ResponseSignupDto } from "../../types/auth.ts";
 import { axiosInstance } from "./axios.ts";
 
-
 export const postSignup = async (
   body: RequestSignupDto
 ): Promise<ResponseSignupDto> => {

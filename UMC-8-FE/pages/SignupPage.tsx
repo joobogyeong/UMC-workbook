@@ -34,7 +34,7 @@ const SignupPage = () => {
   })
   const onSubmit: SubmitHandler<FormFields> = async(data) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { passwordCheck, ...rest } = data;
+    const { passwordCheck, ...rest } = data;//스프레드연사자
     const response = await postSignup(rest);
     console.log(response);
   };
