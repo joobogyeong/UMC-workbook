@@ -1,8 +1,8 @@
 import useForm from './../hooks/useForm';
 import { UserSigninInformation, validateSignin } from "../utils/validate"
 import React, { useEffect } from 'react';
-import { useAuth } from '../src/context/Authcontext';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../src/context/Authcontext';
 
 const LoginPage = () => {
     const {login, accessToken}= useAuth();
@@ -24,6 +24,10 @@ const LoginPage = () => {
     const handleSubmit = async () => {
         await login(values);
     };
+    const handleGoogleLogin = () =>{
+        window.location.href=
+        import.meta.env.VITE_SERVER_API_URL + "/v1/auth/google/login"
+    }
     const isDisabled =
         Object.values(errors || {}).some((error) => error.length > 0) ||
         Object.values(values).some((value) => value === "");
@@ -56,6 +60,13 @@ const LoginPage = () => {
                     className="w-full bg-blue-600 text-white py-3 rounded-md text-lg font-medium hover:bg-blue-700 transition-colors cursor-pointer disabled:bg-gray-300"
                 >
                     로그인
+                </button>
+                <button
+                    type="button"
+                    onClick={handleGoogleLogin}
+                    className="w-full bg-blue-600 text-white py-3 rounded-md text-lg font-medium hover:bg-blue-700 transition-colors cursor-pointer disabled:bg-gray-300"
+                >
+                    구글 로그인
                 </button>
             </div>
         </div>
