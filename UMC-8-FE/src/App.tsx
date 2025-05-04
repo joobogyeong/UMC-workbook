@@ -43,8 +43,6 @@ const protectedRoutes: RouteObject[] = [
 const router = createBrowserRouter([...publicRoutes, ...protectedRoutes])
 
 function App() {
-
-
   return (
     <AuthProvider>
       <RouterProvider router = {router}/>
