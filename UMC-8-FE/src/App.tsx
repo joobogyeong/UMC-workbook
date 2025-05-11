@@ -9,6 +9,8 @@ import { AuthProvider } from './context/Authcontext';
 import ProtectedLayout from './../Layouts/ProtectedLayout';
 import MyPage from './../pages/Mypage';
 import GoogleLoginRedirectPage from './../pages/GoogleLoginRedirectPage';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const publicRoutes: RouteObject[] = [
   {
@@ -28,26 +30,42 @@ const publicRoutes: RouteObject[] = [
 const protectedRoutes: RouteObject[] = [
   {
     path: "/",
-    element: <ProtectedLayout />,
+    element: <ProtectedLayout />, // 로그인 검사
     errorElement: <NotFoundPage />,
     children: [
       {
-        path: "my",
-        element: <MyPage />,
+        path: "",
+        element: <HomeLayout />, // 레이아웃 적용
+        children: [
+          {
+            path: "my",
+            element: <MyPage />,
+          },
+        ],
       },
     ],
   },
 ];
 
+const router = createBrowserRouter([...publicRoutes, ...protectedRoutes]);
 
-const router = createBrowserRouter([...publicRoutes, ...protectedRoutes])
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 3,
+    },
+  },
+});
 
 function App() {
   return (
-    <AuthProvider>
-      <RouterProvider router = {router}/>
-    </AuthProvider>
-  )
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+      {import.meta.env.DEV &&  <ReactQueryDevtools initialIsOpen={false} />}
+    </QueryClientProvider>
+  );
 }
 
 export default App
