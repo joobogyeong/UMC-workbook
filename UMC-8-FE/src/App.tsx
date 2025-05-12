@@ -5,6 +5,7 @@ import NotFoundPage from './../pages/NotFoundPage';
 import LoginPage from './../pages/LoginPage';
 import HomeLayout from './../Layouts/HomeLayout';
 import SignupPage from './../pages/SignupPage';
+import LpDetailPage from './../pages/LpDetailPage';
 import { AuthProvider } from './context/Authcontext';
 import ProtectedLayout from './../Layouts/ProtectedLayout';
 import MyPage from './../pages/Mypage';
@@ -22,6 +23,7 @@ const publicRoutes: RouteObject[] = [
       { path: "login", element: <LoginPage /> },
       { path: "signup", element: <SignupPage /> },
       { path: "v1/auth/google/callback", element: <GoogleLoginRedirectPage /> },
+      { path: "lps/:lpid", element: <LpDetailPage />},
     ],
   },
 ];

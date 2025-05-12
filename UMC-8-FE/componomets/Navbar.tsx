@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between p-4">
         <Link
           to="/"
-          className="text-xl font-bold text-gray-900 dark:text-white"
+          className="text-xl font-bold text-pink-500 dark:text-white"
         >
           SpinningSpinning Dolimpan
         </Link>

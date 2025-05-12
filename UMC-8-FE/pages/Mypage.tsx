@@ -26,7 +26,7 @@ const MyPage = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-white text-black">
   <div className="text-lg font-semibold mb-8">마이페이지</div>
 
   {data ? (
