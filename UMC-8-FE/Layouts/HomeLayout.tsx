@@ -6,7 +6,7 @@ const HomeLayout = () => {
     return (
         <div className="h-dvh flex flex-col bg-white text-white">
             <Navbar />
-            <main className="flex-1 flex items-center justify-center">
+            <main className="flex-1 flex items-center justify-center py-10">
                 <Outlet />
             </main>
             <Footer />
