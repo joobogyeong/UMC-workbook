@@ -1,12 +1,11 @@
 import { useParams } from "react-router-dom";
 import useGetLpDetail from "../hooks/queries/useGetLpDetail.ts";
 import { Heart } from "lucide-react";
-import { Likes, ResponseLikeIdDto, ResponseLpDto } from "../types/lp.ts";
 import useGetMyInfo from './../hooks/queries/useGetMyInfo';
 import { useAuth } from "../src/context/Authcontext.tsx";
-import { UseMutateFunction } from "@tanstack/react-query";
 import usePostLike from './../hooks/mutations/usePostLike';
 import useDeleteLike from './../hooks/mutations/useDeleteLike';
+import { Likes, ResponseLpDto } from "../types/lp.ts";
 
 const LpDetailPage = () => {
     const { lpId } = useParams();
@@ -22,9 +21,8 @@ const LpDetailPage = () => {
     } = useGetLpDetail({ lpId: Number(lpId) });
 
     const { data: me } = useGetMyInfo(accessToken);
-    const { mutate: likeMutate }: UseMutateFunction<ResponseLikeIdDto> = usePostLike();
-    const { mutate: disLikeMutate }: UseMutateFunction<ResponseLikeIdDto> = useDeleteLike();
-
+    const { mutate: likeMutate } = usePostLike();
+    const { mutate: disLikeMutate } = useDeleteLike();
 
     const isLiked: boolean | undefined = lp?.data.likes
         .map((like: Likes) => like.userId)
