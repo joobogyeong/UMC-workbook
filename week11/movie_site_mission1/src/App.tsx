@@ -21,6 +21,7 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <div className="text-3xl font-bold underline">Hello Tailwind</div>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
