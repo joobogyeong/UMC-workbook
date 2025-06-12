@@ -16,6 +16,7 @@ function useCustomFetch<T>(url: string, language:Language="en-US"): ApiResponse<
     useEffect(() => {
         const fetchData = async () => {
             setIsPending(true);
+            setIsError(false);
             try {
                 const { data } = await axios.get<T>(url, {
                     headers: {
